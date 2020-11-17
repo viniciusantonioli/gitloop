@@ -2,7 +2,7 @@ import 'dart:io';
 
 String welcome() {
   String name = 'GitLoop';
-  String ver = 'v0.0.1';
+  String ver = 'v0.0.2';
   String vtype = 'Debug';
   String welcome = name + " | " + ver + ' ' + vtype;
   return welcome;
@@ -10,6 +10,10 @@ String welcome() {
 String time(){
   var timeNow = DateTime.now().toString();
   return timeNow;
+}
+void terminal_log(String msg, String sep, var fun){
+  String logprefix = 'GitLoop_> ';
+  print(logprefix + msg + sep + fun);
 }
 void command(String cmd, List<String> args) {
   Process.run(cmd, args).then((ProcessResult results) {
@@ -21,13 +25,9 @@ void command(String cmd, List<String> args) {
       terminal_log('Commit realizado', ' -> ', time());
       command('git', ['push']);
       terminal_log('Push enviado', ' -> ', time());
-      terminal_log('Procurando por novas alterações...', null, null);
+      terminal_log('Procurando por novas alterações...', '', '');
     } else {
-      terminal_log('Procurando por alterações...', null, null);
+      terminal_log('Procurando por alterações...', '', '');
     }
   });
-}
-void terminal_log(String msg, String sep, var fun){
-  String logprefix = 'GitLoop_> ';
-  print(logprefix + msg + sep + fun);
 }
