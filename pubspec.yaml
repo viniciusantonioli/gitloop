@@ -1,6 +1,6 @@
 name: gitloop
 description: A Git loop application
-version: 0.0.3
+version: 0.0.4
 author: Vinícius Antonioli
 
 environment:

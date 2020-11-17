@@ -1,3 +1,4 @@
 pubspec.lock
 .packages
-.dart-tool
+.dart_tool/
+.env
