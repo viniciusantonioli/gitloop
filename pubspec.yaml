@@ -1,13 +1,13 @@
 name: gitloop
 description: A Git loop application
-version: 0.0.2
-homepage: https://www.jovemdinamico.com
+version: 0.0.3
 author: Vinícius Antonioli
 
 environment:
   sdk: '>=2.5.0 <3.0.0'
 
 dependencies:
+  dotenv: ^2.0.0
   #path: ^1.6.0
 
 dev_dependencies:
