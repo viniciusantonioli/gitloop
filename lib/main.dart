@@ -1,6 +1,9 @@
 import 'dart:io';
 import 'dart:async';
+
 import 'package:dotenv/dotenv.dart' show load, env;
+import 'package:path/path.dart';
+import 'package:watcher/watcher.dart';
 import './git.dart';
 
 void welcome() {
@@ -41,7 +44,10 @@ void command(String cmd, List<String> args) {
 
 void init() async {
   load();
-  await Future.delayed(Duration(minutes: int.parse(env['DELAY_MINUTES'])));
-  command(
-      'git', ['commit', '-m', '\"Implantado automaticamente pelo GitLoop.\"']);
+  var watcher = DirectoryWatcher(absolute('') + '/lib');
+  watcher.events.listen((event) {
+    command('git',
+        ['commit', '-m', '\"Implantado automaticamente pelo GitLoop.\"']);
+  });
+  // await Future.delayed(Duration(minutes: int.parse(env['DELAY_MINUTES'])));
 }
