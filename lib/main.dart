@@ -11,7 +11,7 @@ void welcome() {
   var ver = 'v0.0.4';
   var vtype = 'Debug';
   var welcome = name + ' | ' + ver + ' ' + vtype;
-  return print(welcome);
+  return stdout.writeln(welcome);
 }
 
 String time() {
@@ -21,7 +21,7 @@ String time() {
 
 void terminal_log(String msg, String sep, var fun) {
   var logprefix = 'GitLoop_> ';
-  print(logprefix + msg + sep + fun);
+  stdout.writeln(logprefix + msg + sep + fun);
 }
 
 void command(String cmd, List<String> args) {
@@ -42,12 +42,11 @@ void command(String cmd, List<String> args) {
   });
 }
 
-void init() async {
+void init() {
   load();
   var watcher = DirectoryWatcher(absolute('') + '/lib');
   watcher.events.listen((event) {
     command('git',
         ['commit', '-m', '\"Implantado automaticamente pelo GitLoop.\"']);
   });
-  // await Future.delayed(Duration(minutes: int.parse(env['DELAY_MINUTES'])));
 }
